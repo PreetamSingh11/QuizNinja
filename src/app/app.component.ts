@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'codeNinja';
+
+  loginStatus: boolean;
+
+  constructor() {
+    this.loginStatus = false;
+  }
 }

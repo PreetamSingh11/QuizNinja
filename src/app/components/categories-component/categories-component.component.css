@@ -1,0 +1,27 @@
+.categoryContainer{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.categories{
+    height: 100%;
+    width: 230px;
+    background-color: black;
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-bottom: 1%;
+    border-radius: 5%;
+    color: white;
+    text-align: center;
+}
+
+.categoriyText{
+    padding: 5%;
+}
+
+
+a{
+    text-decoration: none;
+}
