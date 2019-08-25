@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyChallengesComponentComponent implements OnInit {
 
+  items = Array.from({length: 100}).map((_, i) => `Item #${i}`);
   constructor() { }
 
   ngOnInit() {

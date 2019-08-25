@@ -1,0 +1,47 @@
+.myChallengeListContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.myChallengeTitle {
+  flex: 1;
+  margin-top:  2%;
+  text-align: center;
+}
+
+.myChallengeList {
+  flex: 4;
+  width: 100%;
+}
+
+.challengeListItem {
+  height: auto;
+  margin: 1%;
+  border-radius: 20px;
+}
+.challengeListItem:nth-child(odd){
+  background-color: #e3f2fd;
+}
+
+.challengeMsgLine{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1%;
+}
+
+.challenge-line{
+  margin: auto;
+  flex: 10;
+}
+.accept-btn{
+  margin: 1%;
+  flex: 1;
+}
+.reject-btn{
+  margin: 1%;
+  flex: 1;
+}
+
+

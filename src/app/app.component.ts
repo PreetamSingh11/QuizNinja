@@ -11,6 +11,6 @@ export class AppComponent {
   loginStatus: boolean;
 
   constructor() {
-    this.loginStatus = false;
+    this.loginStatus = true;
   }
 }

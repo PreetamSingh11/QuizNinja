@@ -9,6 +9,10 @@ import { MyChallengesComponentComponent } from './components/my-challenges-compo
 
 import { FormsModule } from '@angular/forms';
 import { CategoriesComponentComponent } from './components/categories-component/categories-component.component';
+import { DashboardProfileComponentComponent } from './components/dashboard-profile-component/dashboard-profile-component.component';
+
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ScrollDispatchModule, ScrollingModule} from '@angular/cdk/scrolling';
 
 @NgModule({
   declarations: [
@@ -16,12 +20,15 @@ import { CategoriesComponentComponent } from './components/categories-component/
     LoginComponentComponent,
     DashboardComponentComponent,
     MyChallengesComponentComponent,
-    CategoriesComponentComponent
+    CategoriesComponentComponent,
+    DashboardProfileComponentComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    ScrollingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

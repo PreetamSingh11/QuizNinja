@@ -1,0 +1,18 @@
+.homeDashboardContainer{
+    display: flex;
+}
+.profileDB{
+    flex: 1;
+    background-color: blue;
+    height: 300px;
+}
+
+.challengeDB{
+    flex: 1;
+    height: 300px;
+}
+
+.vl {
+    border-left: 1px solid rgb(239, 242, 243);
+    height: auto;
+}

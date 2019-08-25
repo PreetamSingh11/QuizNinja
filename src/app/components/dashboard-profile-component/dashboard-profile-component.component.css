@@ -1,0 +1,22 @@
+.dashboardProfileContainer{
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.profilePicture{
+    flex: 1;
+    background-color:darkgoldenrod;
+    text-align: center;
+}
+.profileStats{
+    flex: 1;
+    background-color: aquamarine;
+    text-align: center;
+}
+
+.pic{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}
