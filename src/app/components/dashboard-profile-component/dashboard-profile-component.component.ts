@@ -7,21 +7,29 @@ import { Chart } from 'chart.js';
   styleUrls: ['./dashboard-profile-component.component.css']
 })
 export class DashboardProfileComponentComponent implements OnInit {
-  // ctx = document.getElementById('#myChart');
+
+  categories = ['Programming', 'History', 'Politics'];
+  chartData = [12, 19, 10];
   constructor(private elementRef: ElementRef) { }
 
   ngOnInit() {
-    this.chart();
+    this.chart(this.chartData);
   }
 
-  chart() {
+  log(x: any) {
+    console.log(x);
+  }
+
+
+  chart(chartData: number[]) {
+    Chart.defaults.global.elements.rectangle.borderWidth = 2;
     const ctx = this.elementRef.nativeElement.querySelector(`#myChart`);
     const myChart = new Chart(ctx, {
       type: 'doughnut',
       data: {
         labels: ['Red', 'Green', 'Blue'],
         datasets: [{
-          data: [12, 19, 10],
+          data: chartData,
           backgroundColor: [
             'rgba(255, 0, 0, 1)',
             'rgba(0, 255, 0, 1)',
@@ -42,17 +50,18 @@ export class DashboardProfileComponentComponent implements OnInit {
         },
         legend: {
           display: true,
-          position: 'bottom',
+          position: 'right',
           labels: {
-            padding: 20
+            padding: 20,
+            usePointStyle: true
           }
         },
         layout: {
           padding: {
-            left: 0,
-            right: 0,
+            left: 10,
+            right: 10,
             top: 10,
-            bottom: 0
+            bottom: 10
           }
         }
       }

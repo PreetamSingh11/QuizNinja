@@ -6,17 +6,22 @@
 }
 .profilePicture{
     flex: 1;
-    background-color:darkgoldenrod;
     text-align: center;
 }
 .profileStats{
     flex: 1;
-    background-color: aquamarine;
-    text-align: center;
+    text-align: end;
+    margin: 2%;
 }
 
 .pic{
     height: 100px;
     width: 100px;
     border-radius: 50%;
+}
+
+@media screen and (max-width: 900px) {
+    .dashboardProfileContainer{
+        margin: 5%;
+    }
 }

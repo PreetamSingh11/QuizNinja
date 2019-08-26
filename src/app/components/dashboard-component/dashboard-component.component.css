@@ -3,7 +3,6 @@
 }
 .profileDB{
     flex: 1;
-    background-color: blue;
     height: 300px;
 }
 
@@ -15,4 +14,10 @@
 .vl {
     border-left: 1px solid rgb(239, 242, 243);
     height: auto;
+}
+
+@media screen and (max-width: 900px) {
+    .homeDashboardContainer{
+        flex-direction: column;
+    }
 }
