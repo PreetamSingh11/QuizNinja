@@ -1,0 +1,7 @@
+<cdk-virtual-scroll-viewport itemSize="1" class="myChallengeList">
+  <div *cdkVirtualFor="let item of items" class="challengeListItem">
+    <div class="challengeMsgLine">
+      <p class="challenge-line"> Someone challenged you in something.{{item}} </p>
+    </div>
+  </div>
+</cdk-virtual-scroll-viewport>

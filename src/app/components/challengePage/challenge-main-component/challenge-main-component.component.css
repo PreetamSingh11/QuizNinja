@@ -1,0 +1,29 @@
+.challengeContainer{
+    display: flex;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.left-sidebar{
+    flex: 1;
+    height: 600px;
+    margin: 10px;
+    padding: 5%;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.listArea{
+    flex: 2;
+    height: 600px;
+    margin: 10px;
+    padding: 5%;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.my-radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+  }

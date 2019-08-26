@@ -16,8 +16,20 @@ export class DashboardProfileComponentComponent implements OnInit {
     this.chart(this.chartData);
   }
 
-  log(x: any) {
-    console.log(x);
+  log(selectedCategory: any) {
+    switch (selectedCategory) {
+      case 'Programming':
+        this.chart([12, 16, 18]);
+        break;
+      case 'History':
+        this.chart([17, 23, 11]);
+        break;
+      case 'Politics':
+        this.chart([3, 13, 8]);
+        break;
+      default:
+        break;
+    }
   }
 
 

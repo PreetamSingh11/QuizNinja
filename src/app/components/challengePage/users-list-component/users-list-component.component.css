@@ -1,0 +1,18 @@
+.myChallengeList {
+  height: 100%;
+  width: 100%;
+}
+
+.challengeListItem {
+  height: auto;
+  margin: 1%;
+  border-radius: 20px;
+}
+
+.challengeListItem:nth-child(odd) {
+  background-color: #e3f2fd;
+}
+
+.challengeMsgLine {
+  padding: 1%;
+}

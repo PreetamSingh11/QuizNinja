@@ -1,0 +1,14 @@
+<div class="challengeContainer">
+  <div class="left-sidebar">
+    <h3> Select Category</h3>
+    <mat-radio-group class="my-radio-group" [(ngModel)]="selectedCategory" (change)="selecteCategory()">
+      <mat-radio-button *ngFor="let category of categories" [value]="category">
+        {{category}}<br>
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <div class="listArea">
+    <h3>{{selectedCategory}} Ninja</h3>
+    <app-users-list-component></app-users-list-component>
+  </div>
+</div>

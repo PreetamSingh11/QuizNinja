@@ -1,7 +1,7 @@
 <div class="categoryContainer">
 
   <div class="categories" *ngFor="let category of categories">
-    <a href="">
+    <a [routerLink]="['/challenge']" routerLinkActive="router-link-active">
       <div class="categoriyText">{{ category }}</div>
     </a>
   </div>

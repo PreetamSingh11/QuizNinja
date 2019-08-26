@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UtilsService } from 'src/app/servies/utils.service';
 
 @Component({
   selector: 'app-categories-component',
@@ -7,10 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoriesComponentComponent implements OnInit {
 
-  categories = ['Programming', 'Politics', 'Sports', 'History', 'Science'];
-  constructor() {
-    this.categories.sort();
-    this.categories.push('Others');
+  categories: string[];
+  constructor(private utilsService: UtilsService) {
+    this.categories = this.utilsService.getCetegoriesList();
   }
 
   ngOnInit() { }
