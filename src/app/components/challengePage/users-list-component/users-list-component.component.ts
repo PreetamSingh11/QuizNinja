@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UtilsService } from 'src/app/servies/utils.service';
+import { Player } from 'src/app/models/player.model';
 
 @Component({
   selector: 'app-users-list-component',
@@ -9,14 +10,17 @@ import { UtilsService } from 'src/app/servies/utils.service';
 export class UsersListComponentComponent implements OnInit {
 
   selectedCategory: string;
-  items = Array.from({ length: 100 }).map((_, i) => `${i}`);
+  playersList: Player[];
 
   constructor(private utilsService: UtilsService) { }
 
   ngOnInit() {
     this.utilsService.selectedCategory.subscribe(selectedCategory => {
       this.selectedCategory = selectedCategory;
-      console.log(this.selectedCategory);
+    });
+
+    this.utilsService.selectedPlayers.subscribe(playersList => {
+      this.playersList = playersList;
     });
   }
 
