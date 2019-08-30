@@ -1,7 +1,11 @@
-<cdk-virtual-scroll-viewport itemSize="1" class="myChallengeList">
-  <div *cdkVirtualFor="let player of playersList" class="challengeListItem">
-    <div class="challengeMsgLine">
-      <p class="challenge-line"> {{ player.name }} </p>
+<div class="myChallengeList">
+  <cdk-virtual-scroll-viewport itemSize="1" class="scroll-viewport">
+    <div *cdkVirtualFor="let player of playersList" class="challengeListItems" (click)="showDetailsFunc(player)">
+      <p> {{ player.name }} </p>
+      <div class="more" *ngIf="showDetails && player.id === selectedPlayerId">
+        <button style="float: right" class="btn btn-primary btn-sx">Start Match</button>
+      </div>
     </div>
-  </div>
-</cdk-virtual-scroll-viewport>
+  </cdk-virtual-scroll-viewport>
+
+</div>

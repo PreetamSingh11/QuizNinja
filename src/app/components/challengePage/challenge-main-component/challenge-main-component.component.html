@@ -1,14 +1,17 @@
 <div class="challengeContainer">
   <div class="left-sidebar">
     <h3> Select Category</h3>
+
     <mat-radio-group class="my-radio-group" [(ngModel)]="selectedCategory" (change)="selecteCategory()">
-      <mat-radio-button *ngFor="let category of categories" [value]="category">
-        {{category}}<br>
+      <mat-radio-button class="list-category" *ngFor="let category of categories; let i = index" disableRipple="true"
+        [value]="category" [ngClass]="{selectedElement: selectedCategory === categories[i]}">
+        <div class="list-items"> {{ category }} </div>
       </mat-radio-button>
     </mat-radio-group>
   </div>
+
   <div class="listArea">
-    <h3>{{selectedCategory}} Ninja</h3>
+    <h3>{{selectedCategory}} Ninja {{selected}}</h3>
     <app-users-list-component></app-users-list-component>
   </div>
 </div>

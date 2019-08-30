@@ -1,18 +1,32 @@
 .myChallengeList {
+  width: 100%;
+  height: 100%;
+  padding-bottom: 10%;
+}
+
+.scroll-viewport {
   height: 100%;
   width: 100%;
+  border-radius: 10px;
 }
 
-.challengeListItem {
-  height: auto;
+.challengeListItems {
   margin: 1%;
-  border-radius: 20px;
+  padding: 3%;
+  border-radius: 5px;
+  border: 1px solid black;
+  cursor: pointer;
 }
 
-.challengeListItem:nth-child(odd) {
-  background-color: #e3f2fd;
+.challengeListItems:hover {
+  background-color: rgb(158, 230, 136);
 }
 
-.challengeMsgLine {
-  padding: 1%;
+.challengeListItems:nth-child(odd) {
+  background-color: #c6cab9;
+}
+
+.more {
+  width: 100%;
+  height: 40px;
 }

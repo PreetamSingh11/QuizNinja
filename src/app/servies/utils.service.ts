@@ -161,7 +161,12 @@ export class UtilsService {
   }
 
   getPlayersList(category: string) {
-    const selectedPlayersList = this.players.filter(player => player.categories.includes(category));
+    let selectedPlayersList: Player[];
+    if (category === 'All') {
+      selectedPlayersList = this.players;
+    } else {
+      selectedPlayersList = this.players.filter(player => player.categories.includes(category));
+    }
     this.playersList.next(selectedPlayersList);
   }
 }

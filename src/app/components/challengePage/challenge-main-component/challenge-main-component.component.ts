@@ -12,9 +12,12 @@ export class ChallengeMainComponentComponent implements OnInit {
   categories: string[];
   constructor(private utilService: UtilsService) {
     this.categories = utilService.getCetegoriesList();
+    this.categories.unshift('All');
   }
 
   ngOnInit() {
+    this.selectedCategory = 'All';
+    this.utilService.getPlayersList(this.selectedCategory);
   }
 
   selecteCategory() {
