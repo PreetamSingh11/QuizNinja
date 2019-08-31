@@ -18,6 +18,7 @@ import {ScrollDispatchModule, ScrollingModule} from '@angular/cdk/scrolling';
 import { UsersListComponentComponent } from './components/challengePage/users-list-component/users-list-component.component';
 import { ChallengeMainComponentComponent } from './components/challengePage/challenge-main-component/challenge-main-component.component';
 import { HomeComponent } from './components/home/home.component';
+import { CreateChallengeComponent } from './components/create-challenge/create-challenge.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { HomeComponent } from './components/home/home.component';
     DashboardProfileComponentComponent,
     UsersListComponentComponent,
     ChallengeMainComponentComponent,
-    HomeComponent
+    HomeComponent,
+    CreateChallengeComponent
   ],
   imports: [
     BrowserModule,

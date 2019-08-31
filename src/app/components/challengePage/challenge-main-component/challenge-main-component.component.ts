@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UtilsService } from 'src/app/servies/utils.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { UtilsService } from 'src/app/servies/utils.service';
   templateUrl: './challenge-main-component.component.html',
   styleUrls: ['./challenge-main-component.component.css']
 })
-export class ChallengeMainComponentComponent implements OnInit {
+export class ChallengeMainComponentComponent implements OnInit, OnDestroy {
 
   selectedCategory: string;
   categories: string[];
@@ -22,5 +22,9 @@ export class ChallengeMainComponentComponent implements OnInit {
 
   selecteCategory() {
     this.utilService.setSelectedCategory(this.selectedCategory);
+  }
+
+  ngOnDestroy() {
+    this.categories.shift();
   }
 }

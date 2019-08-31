@@ -1,0 +1,39 @@
+<div class="createchallengeContainer">
+
+  <div class="left-sidebar">
+    <h3> Select Category</h3>
+    <mat-radio-group class="my-radio-group" [(ngModel)]="selectedCategory" (change)="selecteCategory()">
+      <mat-radio-button class="list-category" *ngFor="let category of categories; let i = index" disableRipple="true"
+        [value]="category" [ngClass]="{selectedElement: selectedCategory === categories[i]}">
+        <div class="list-items"> {{ category }} </div>
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <div class="question-add container">
+    <form>
+      <div class="form-group">
+        <textarea class="form-control" name="question" id="question" cols="30" rows="5"
+          placeholder="Enter the Question..."></textarea>
+      </div>
+
+      <div class="radio text-center">
+        <label class="radio-inline"><input type="radio" name="optionType" value="single_answare" checked> Single
+          Answare</label>
+        <label style="margin-left: 10%" class="radio-inline"><input type="radio" name="optionType"
+            value="multiple_answares"> Multiple
+          Answares</label>
+      </div>
+
+      <div class="form-group input-group" *ngFor="let option of optionArray; let i = index">
+        <input class="form-control" placeholder="Optoin {{option}}">
+      </div>
+
+      <label (click)="addOption()" *ngIf="addOptionBtnVisibliity">+ Add more options</label>
+      <a (click)="removeOption()" *ngIf="removeOptionBtnVisibility" class="text-info float-right">
+          X
+      </a>
+    </form>
+  </div>
+
+</div>
