@@ -1,39 +1,79 @@
 <div class="createchallengeContainer">
 
-  <div class="left-sidebar">
-    <h3> Select Category</h3>
-    <mat-radio-group class="my-radio-group" [(ngModel)]="selectedCategory" (change)="selecteCategory()">
-      <mat-radio-button class="list-category" *ngFor="let category of categories; let i = index" disableRipple="true"
-        [value]="category" [ngClass]="{selectedElement: selectedCategory === categories[i]}">
-        <div class="list-items"> {{ category }} </div>
-      </mat-radio-button>
-    </mat-radio-group>
+  <div class="container" *ngIf="slideSelectCategory">
+    <div class="row">
+      <h3>Select Category</h3>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <mat-radio-group class="my-radio-group" [(ngModel)]="selectedCategory" (change)="selecteCategory()">
+          <mat-radio-button class="list-category" *ngFor="let category of categories; let i = index"
+            disableRipple="true" [value]="category" [ngClass]="{ selectedElement: selectedCategory === categories[i] }">
+            <div class="list-items">{{ category }}</div>
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+    </div>
   </div>
 
-  <div class="question-add container">
-    <form>
-      <div class="form-group">
-        <textarea class="form-control" name="question" id="question" cols="30" rows="5"
-          placeholder="Enter the Question..."></textarea>
+  <div class="container" *ngIf="slideAddQuestion">
+    <div class="row">
+      <div class="col">
+        <button (click)="backToSelectCategory()" class="material-icons">keyboard_backspace</button>
       </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-10">
+        <div class="container">
+          <form [formGroup]="questionForm">
+            <div class="form-group">
+              <textarea formControlName="question" class="form-control" name="question" id="question" cols="30" rows="4"
+                placeholder="Enter the Question..."></textarea>
+            </div>
 
-      <div class="radio text-center">
-        <label class="radio-inline"><input type="radio" name="optionType" value="single_answare" checked> Single
-          Answare</label>
-        <label style="margin-left: 10%" class="radio-inline"><input type="radio" name="optionType"
-            value="multiple_answares"> Multiple
-          Answares</label>
+            <div class="radio text-center">
+              <label class="radio-inline"><input type="radio" name="optionType" formControlName="optionType"
+                  value="single_answare" checked>
+                Single Answare</label>
+              <label style="margin-left: 10%" class="radio-inline"><input type="radio" name="optionType"
+                  formControlName="optionType" value="multiple_answares" />
+                Multiple Answares</label>
+            </div>
+
+            <div formArrayName="options">
+              <div *ngFor="let option of optionArray; let i = index" class="form-group">
+                <input class="form-control" formControlName="{{i}}" placeholder="Option {{option}}">
+              </div>
+            </div>
+
+            <div class="form-group d-flex flex-row-reverse">
+              <button style="margin-left: 5%" class="btn btn-danger btn-sm p-1" data-toggle="tooltip"
+                data-placement="top" title="Remove Last Option" (click)="removeOption()"
+                *ngIf="removeOptionBtnVisibility">
+                - Remove
+              </button>
+              <button class="btn btn-primary btn-sm p-1" data-toggle="tooltip" data-placement="top"
+                title="Add An Option" (click)="addOption()" *ngIf="addOptionBtnVisibliity">
+                + Option
+              </button>
+            </div>
+            <div class="form-group">
+              <button type="button" class="btn btn-primary btn-sm" (click)="onQuestionSubmit()">Next</button>
+            </div>
+          </form>
+        </div>
       </div>
+    </div>
+  </div>
 
-      <div class="form-group input-group" *ngFor="let option of optionArray; let i = index">
-        <input class="form-control" placeholder="Optoin {{option}}">
+  <div class="container" *ngIf="slideGetAnswaare">
+    <div class="row">
+      <div class="col">
+        <button (click)="backToAddQtn()" class="material-icons">keyboard_backspace</button>
       </div>
-
-      <label (click)="addOption()" *ngIf="addOptionBtnVisibliity">+ Add more options</label>
-      <a (click)="removeOption()" *ngIf="removeOptionBtnVisibility" class="text-info float-right">
-          X
-      </a>
-    </form>
+    </div>
+    <p>Todo</p>
   </div>
 
 </div>
