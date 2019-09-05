@@ -1,0 +1,83 @@
+.createchallengeContainer {
+  height: 600px;
+  margin-top: 1%;
+  margin-left: 15%;
+  margin-right: 15%;
+  padding: 5%;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.my-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+
+  ::ng-deep .mat-radio-button,
+  ::ng-deep .mat-radio-button .mat-radio-label {
+    width: 100%;
+  }
+
+  ::ng-deep .mat-radio-button .mat-radio-container {
+    width: 0;
+  }
+
+  ::ng-deep .mat-radio-container .mat-radio-outer-circle,
+  ::ng-deep .mat-radio-container .mat-radio-inner-circle {
+    border: none;
+    width: 0;
+  }
+
+}
+
+
+.list-category {
+  border-radius: 5px;
+  margin-bottom: 2%;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.list-category:hover {
+  background-color: slateblue;
+  color: white;
+}
+
+.list-items {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 5%;
+  right: 0;
+  top: 0;
+}
+
+.answare-radios {
+  .example-radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+  }
+
+  .example-radio-button {
+    margin: 5px;
+  }
+}
+
+.answare-checks{
+  .example-h2 {
+    margin: 10px;
+  }
+
+  .example-section {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    height: 60px;
+  }
+
+  .example-margin {
+    margin: 0 10px;
+  }
+}

@@ -10,6 +10,7 @@ import { MyChallengesComponentComponent } from './components/my-challenges-compo
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { CategoriesComponentComponent } from './components/categories-component/categories-component.component';
 import { DashboardProfileComponentComponent } from './components/dashboard-profile-component/dashboard-profile-component.component';
@@ -43,6 +44,7 @@ import { MatIconModule } from '@angular/material/icon';
     HttpClientModule,
     ReactiveFormsModule,
     MatRadioModule,
+    MatCheckboxModule,
     BrowserAnimationsModule,
     ScrollingModule,
     MatIconModule

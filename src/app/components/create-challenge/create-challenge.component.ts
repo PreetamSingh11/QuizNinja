@@ -1,18 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, FormArray } from '@angular/forms';
 import { UtilsService } from 'src/app/servies/utils.service';
+import { Question } from 'src/app/models/question.model';
 
 
 @Component({
   selector: 'app-create-challenge',
   templateUrl: './create-challenge.component.html',
-  styleUrls: ['./create-challenge.component.css']
+  styleUrls: ['./create-challenge.component.scss']
 })
 export class CreateChallengeComponent implements OnInit {
   selectedCategory: string;
   categories: string[];
 
   optionArray: Array<any> = ['A', 'B'];
+
+  myQuestion: Question;
 
   slideSelectCategory = true;
   slideAddQuestion = false;
@@ -93,8 +96,28 @@ export class CreateChallengeComponent implements OnInit {
 
   onQuestionSubmit() {
     this.slideAddQuestion = false;
-    console.log(this.questionForm.value);
+    const questionObject = this.questionForm.value;
+    this.myQuestion = {
+      question: questionObject.question,
+      optionType: questionObject.optionType,
+      options: questionObject.options,
+      answares: []
+    };
     this.selectAnsware();
+  }
+
+  checkedOptions(value: any, checked: any) {
+    if (checked) {
+      this.myQuestion.answares.push(value);
+    } else {
+      this.myQuestion.answares = this.myQuestion.answares.filter(answare => {
+        return value !== answare;
+      });
+    }
+  }
+
+  submitQuestion() {
+    console.log('The Question will be submitted with these values...', this.myQuestion);
   }
 
   getNextLetter(char: string): string {
