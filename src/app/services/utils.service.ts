@@ -169,4 +169,11 @@ export class UtilsService {
     }
     this.playersList.next(selectedPlayersList);
   }
+
+  getNextLetter(char: string): string {
+    let code = char.charCodeAt(0);
+    code++;
+    return String.fromCharCode(code);
+  }
+
 }

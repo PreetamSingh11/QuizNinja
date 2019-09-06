@@ -9,8 +9,13 @@ import { DashboardComponentComponent } from './components/dashboard-component/da
 import { MyChallengesComponentComponent } from './components/my-challenges-component/my-challenges-component.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+
 
 import { CategoriesComponentComponent } from './components/categories-component/categories-component.component';
 import { DashboardProfileComponentComponent } from './components/dashboard-profile-component/dashboard-profile-component.component';
@@ -45,6 +50,9 @@ import { MatIconModule } from '@angular/material/icon';
     ReactiveFormsModule,
     MatRadioModule,
     MatCheckboxModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
     BrowserAnimationsModule,
     ScrollingModule,
     MatIconModule

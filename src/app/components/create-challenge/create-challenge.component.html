@@ -20,7 +20,7 @@
   <div class="container" *ngIf="slideAddQuestion">
     <div class="row">
       <div class="col">
-        <button (click)="backToSelectCategory()" class="material-icons">keyboard_backspace</button>
+        <div style="cursor: pointer" (click)="backToSelectCategory()" class="material-icons">keyboard_backspace</div>
       </div>
     </div>
     <div class="row justify-content-center">
@@ -59,7 +59,11 @@
               </button>
             </div>
             <div class="form-group">
-              <button type="button" class="btn btn-primary btn-sm" (click)="onQuestionSubmit()">Next</button>
+              <button type="button" [disabled]="questionForm.invalid" class="btn btn-primary btn-sm"
+                (click)="onQuestionSubmit()">Next</button>
+            </div>
+            <div class="form-group text-danger">
+              {{questionErrMsg}}
             </div>
           </form>
         </div>
@@ -70,49 +74,44 @@
   <div class="container" *ngIf="slideGetAnswaare">
     <div class="row">
       <div class="col">
-        <button (click)="backToAddQtn()" class="material-icons">keyboard_backspace</button>
+        <div style="cursor: pointer" (click)="backToAddQtn()" class="material-icons">keyboard_backspace</div>
       </div>
     </div>
-    <div class="row">
-      <div class="col">
+    <div class="row justify-content-center">
+      <div class="col-10">
         <p id="example-radio-group-label">{{myQuestion.question}}</p>
       </div>
     </div>
     <form>
-      <div class="row" *ngIf="myQuestion.optionType==='single_answare'">
-        <div class="container">
-          <div class="row">
 
-            <div class="form-group answare-radios">
-              <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
-                [(ngModel)]="myQuestion.answares" name="radiobutton">
-                <mat-radio-button class="example-radio-button" *ngFor="let option of myQuestion.options"
-                  [value]="option">
-                  {{option}}
-                </mat-radio-button>
-              </mat-radio-group>
-            </div>
-
+      <div class="row justify-content-center" *ngIf="myQuestion.optionType==='single_answare'">
+        <div class="col-8">
+          <div class="form-group answare-radios">
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+              [(ngModel)]="myQuestion.answares" name="radiobutton">
+              <mat-radio-button class="example-radio-button" *ngFor="let option of myQuestion.options" [value]="option">
+                {{option}}
+              </mat-radio-button>
+            </mat-radio-group>
           </div>
         </div>
       </div>
 
-      <div class="row" *ngIf="myQuestion.optionType==='multiple_answares'">
-        <div class="col">
-
+      <div class="row justify-content-center" *ngIf="myQuestion.optionType==='multiple_answares'">
+        <div class="col-8">
           <div class="form-group answare-checks">
             <div *ngFor="let option of myQuestion.options">
               <mat-checkbox class="example-margin" (change)="checkedOptions(option,$event.checked)" name="checkboxes">
                 {{option}}</mat-checkbox>
             </div>
           </div>
-
         </div>
       </div>
 
-      <div class="row">
-        <div class="form-group">
-          <button type="button" (click)="submitQuestion()" class="btn btn-primary btn-sm">Submit</button>
+      <div class="row justify-content-center">
+        <div class="form-group col-10">
+          <button type="button" [disabled]="myQuestion.answares.length < 1" (click)="submitQuestion()"
+            class="btn btn-primary btn-sm">Submit</button>
         </div>
       </div>
     </form>

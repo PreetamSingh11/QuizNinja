@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, FormArray } from '@angular/forms';
-import { UtilsService } from 'src/app/servies/utils.service';
+import { FormBuilder, FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
+import { UtilsService } from 'src/app/services/utils.service';
 import { Question } from 'src/app/models/question.model';
+import { ArrayService } from 'src/app/services/array.service';
 
 
 @Component({
@@ -16,6 +17,7 @@ export class CreateChallengeComponent implements OnInit {
   optionArray: Array<any> = ['A', 'B'];
 
   myQuestion: Question;
+  questionErrMsg: string;
 
   slideSelectCategory = true;
   slideAddQuestion = false;
@@ -28,7 +30,7 @@ export class CreateChallengeComponent implements OnInit {
 
   questionForm: FormGroup;
 
-  constructor(private utilService: UtilsService, private formBuilder: FormBuilder) {
+  constructor(private utilService: UtilsService, private arrayService: ArrayService, private formBuilder: FormBuilder) {
     this.categories = utilService.getCetegoriesList();
   }
 
@@ -37,12 +39,12 @@ export class CreateChallengeComponent implements OnInit {
 
   initQuestionForm() {
     this.questionForm = this.formBuilder.group({
-      question: new FormControl(''),
-      optionType: new FormControl(null),
-      options: new FormArray([])
+      question: new FormControl('', [Validators.required]),
+      optionType: new FormControl(null, [Validators.required]),
+      options: new FormArray([], [Validators.required])
     });
-    this.opt.push(this.formBuilder.control(''));
-    this.opt.push(this.formBuilder.control(''));
+    this.opt.push(this.formBuilder.control('', [Validators.required]));
+    this.opt.push(this.formBuilder.control('', [Validators.required]));
   }
 
   get f() { return this.questionForm.controls; }
@@ -71,9 +73,9 @@ export class CreateChallengeComponent implements OnInit {
   }
 
   addOption() {
-    const nextOption = this.getNextLetter(this.optionArray[this.optionArray.length - 1]);
+    const nextOption = this.utilService.getNextLetter(this.optionArray[this.optionArray.length - 1]);
     if (this.optionArray.length <= 5) {
-      this.opt.push(this.formBuilder.control(''));
+      this.opt.push(this.formBuilder.control('', [Validators.required]));
       this.optionArray.push(nextOption);
       if (this.optionArray.length === 5) {
         this.addOptionBtnVisibliity = false;
@@ -95,34 +97,46 @@ export class CreateChallengeComponent implements OnInit {
   }
 
   onQuestionSubmit() {
-    this.slideAddQuestion = false;
     const questionObject = this.questionForm.value;
     this.myQuestion = {
       question: questionObject.question,
       optionType: questionObject.optionType,
+      category: this.selectedCategory,
       options: questionObject.options,
       answares: []
     };
-    this.selectAnsware();
+    if (this.validQuestionObject()) {
+      this.questionErrMsg = '';
+      this.slideAddQuestion = false;
+      this.selectAnsware();
+    } else {
+      this.questionErrMsg = 'Something is wrong!';
+    }
   }
 
   checkedOptions(value: any, checked: any) {
     if (checked) {
       this.myQuestion.answares.push(value);
     } else {
-      this.myQuestion.answares = this.myQuestion.answares.filter(answare => {
-        return value !== answare;
-      });
+      this.myQuestion.answares = this.arrayService.removeElement(this.myQuestion.answares, value);
     }
   }
 
   submitQuestion() {
-    console.log('The Question will be submitted with these values...', this.myQuestion);
+    if (this.myQuestion.answares.length > 0) {
+      console.log(JSON.stringify(this.myQuestion));
+    }
   }
 
-  getNextLetter(char: string): string {
-    let code = char.charCodeAt(0);
-    code++;
-    return String.fromCharCode(code);
+  validQuestionObject() {
+    const temp = this.myQuestion.options.map(option => option.trim().length !== 0);
+    if (this.myQuestion.question.trim().length === 0 || !temp.every(value => true === value)) {
+      return false;
+    } else {
+      this.myQuestion.question = this.myQuestion.question.trim();
+      this.myQuestion.options = this.myQuestion.options.map(option => option.trim());
+    }
+    return true;
   }
+
 }
