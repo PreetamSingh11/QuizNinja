@@ -10,7 +10,7 @@ export class HomeComponent implements OnInit {
   loginStatus: boolean;
 
   constructor() {
-    this.loginStatus = true;
+    this.loginStatus = false;
   }
 
   ngOnInit() {

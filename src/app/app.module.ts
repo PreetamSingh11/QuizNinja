@@ -15,6 +15,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
 
 
 import { CategoriesComponentComponent } from './components/categories-component/categories-component.component';
@@ -53,6 +54,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatSelectModule,
     BrowserAnimationsModule,
     ScrollingModule,
     MatIconModule

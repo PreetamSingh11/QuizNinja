@@ -1,35 +1,90 @@
-<div class="loginContainer">
+<div class="container-fluid">
+  <div class="row align-items-center justify-content-center flex-column flex-md-row">
 
-    <div class="loginInfo"> 
-        <h1>A platform to compete with others in different categories.</h1>
+    <div class="col-lg-5 col-md-11 col-sm-12 login-text">
+      <h1>A platform to compete with others in different categories.</h1>
     </div>
 
-    <div class="loginForm">
-        <h3>Login</h3>
-        <form (ngSubmit)="login(email.value,password.value)">
-        <div class="form-group">
-            <input 
-                class="form-control" 
-                ngModel name="email" 
-                #email="ngModel" id="email" 
-                type="email"
-                placeholder="Emial" 
-                required />
-            <div class="alert alert-danger" *ngIf="email.touched && !email.valid">email is required</div>
+    <div class="col-lg-5 col-md-11 col-sm-12">
+      <form [formGroup]="loginForm" class="container login-form" (submit)="login()">
+        <div class="login-title">
+          <h3>Login</h3>
+          <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter">
+            Register
+          </button>
         </div>
-        <div class="form-group">
-            <input 
-                class="form-control" 
-                ngModel name="password" 
-                #password="ngModel" 
-                id="password" 
-                type="password"
-                placeholder="password"
-                required />
-            <div class="alert alert-danger" *ngIf="password.touched && !password.valid">password is required</div>
-        </div>
-        <button class="btn btn-primary">Login</button>
-        <button style="margin-left: 5%" class="btn btn-primary">Register</button>
-        </form>
+
+        <mat-form-field appearance="outline">
+          <input matInput formControlName="email">
+          <mat-label>Email</mat-label>
+          <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <input matInput type="password" formControlName="password">
+          <mat-label>Password</mat-label>
+          <mat-icon matSuffix>lock</mat-icon>
+        </mat-form-field>
+
+        <button mat-raised-button type="submit" color="primary">Login</button>
+
+      </form>
     </div>
+
+  </div>
+
+  <form [formGroup]="signUpForm" class="container" (submit)=register()>
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+      aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">Create an Account</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body signUp-form">
+
+            <mat-form-field appearance="outline">
+              <input matInput formControlName="username">
+              <mat-label>Name</mat-label>
+              <mat-icon matSuffix>person</mat-icon>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <input matInput formControlName="s_email">
+              <mat-label>Email</mat-label>
+              <mat-icon matSuffix>email</mat-icon>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <input matInput type="password" formControlName="s_password">
+              <mat-label>Password</mat-label>
+              <mat-icon matSuffix>lock</mat-icon>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <input matInput type="password" formControlName="s_confirm_password">
+              <mat-label>Password</mat-label>
+              <mat-icon matSuffix>lock</mat-icon>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Select Category</mat-label>
+              <mat-select formControlName="s_category" multiple>
+                <mat-option *ngFor="let category of categories" [value]="category">{{category}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary btn-sm">Sign Up</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
 </div>
