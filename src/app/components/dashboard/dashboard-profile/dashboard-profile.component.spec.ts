@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DashboardProfileComponentComponent } from './dashboard-profile-component.component';
+import { DashboardProfileComponentComponent } from './dashboard-profile.component';
 
 describe('DashboardProfileComponentComponent', () => {
   let component: DashboardProfileComponentComponent;

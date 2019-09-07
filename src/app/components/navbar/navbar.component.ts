@@ -2,16 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-navbar',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.scss']
 })
-export class HomeComponent implements OnInit {
-  title = 'quizNinja';
+export class NavbarComponent implements OnInit {
 
   loginStatus: boolean;
-  constructor(private userService: UserService) {
-  }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
     this.loginStatus = this.userService.getLoginStatus();

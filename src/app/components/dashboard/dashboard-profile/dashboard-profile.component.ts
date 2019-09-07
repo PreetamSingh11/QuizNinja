@@ -3,8 +3,8 @@ import { Chart } from 'chart.js';
 
 @Component({
   selector: 'app-dashboard-profile-component',
-  templateUrl: './dashboard-profile-component.component.html',
-  styleUrls: ['./dashboard-profile-component.component.css']
+  templateUrl: './dashboard-profile.component.html',
+  styleUrls: ['./dashboard-profile.component.scss']
 })
 export class DashboardProfileComponentComponent implements OnInit {
 

@@ -1,0 +1,31 @@
+.homeDashboardContainer {
+  display: flex;
+}
+
+.profileDB {
+  flex: 1;
+  height: 300px;
+}
+
+.challengeDB {
+  flex: 1;
+  height: 300px;
+}
+
+.vl {
+  border-left: 1px solid rgb(239, 242, 243);
+  height: auto;
+}
+
+@media screen and (max-width: 900px) {
+  .homeDashboardContainer {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 960px) {
+
+  .profileDB {
+    height: 400px;
+  }
+}

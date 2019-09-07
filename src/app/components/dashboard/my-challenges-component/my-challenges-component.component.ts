@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-my-challenges-component',
   templateUrl: './my-challenges-component.component.html',
-  styleUrls: ['./my-challenges-component.component.css']
+  styleUrls: ['./my-challenges-component.component.scss']
 })
 export class MyChallengesComponentComponent implements OnInit {
 
