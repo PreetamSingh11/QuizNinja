@@ -1,6 +1,60 @@
-<div class="homeDashboardContainer">
-    <app-dashboard-profile-component class="profileDB"></app-dashboard-profile-component>
-    <div class="vl"></div>
-    <app-my-challenges-component class="challengeDB"></app-my-challenges-component>
-</div>
+<div class="container-fluid">
+  <div class="row homeDashboardContainer justify-content-center align-items-center">
 
+    <div class="col-lg-2 col-md-6 col-sm-12">
+      <div class="profile-container shadow p-3 mb-5 bg-white rounded">
+        <img class="rounded-circle" height=100px width=100px
+          src="https://cbsnews1.cbsistatic.com/hub/i/2017/06/29/fe40ccf2-90d6-4b24-92bf-b8795d04c2c2/gettyimages-803015182.jpg"
+          alt="image">
+        <h5 style="margin: 3%">John Doe</h5>
+      </div>
+
+    </div>
+
+    <div class="col-lg-4 col-md-6 col-sm-12">
+      <div style="float: right;" class="dropdown">
+        <button class="btn btn-primary btn-xs dropdown-toggle" type="button" id="dropdownMenuButton"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Categories
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <div *ngFor="let category of categories" (click)="log(category)" class="dropdown-item">{{ category }}</div>
+        </div>
+      </div>
+
+      <canvas id="myChart"></canvas>
+
+    </div>
+
+
+    <div style="padding-right: 0%" class="col-lg-6 col-md-12 col-sm-12">
+      <div class="my-challenges">
+
+        <div class="list-title">
+          <h4 style="text-align: center">My Challenges</h4>
+          <hr>
+        </div>
+
+        <div class="container-fluid list-contant">
+          <cdk-virtual-scroll-viewport itemSize="1" class="list-viewport">
+            <div *cdkVirtualFor="let item of items" class="list-item">
+
+              <div style="height: 100%" class="row justify-content-around align-items-center">
+                <div class="col-lg-8 col-md-8 col-sm-8 col-12">
+                  <p style="margin: 0%; margin-left: 5%;"> Someone challenged you in something.{{item}} </p>
+                </div>
+                <div class="col-lg-4 col-md-3 col-sm-4 col-10">
+                  <button class="btn btn-primary btn-sm my-btn">Accept</button>
+                  <button class="btn btn-danger btn-sm my-btn">Reject</button>
+                </div>
+              </div>
+
+            </div>
+          </cdk-virtual-scroll-viewport>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
