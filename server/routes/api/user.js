@@ -34,8 +34,8 @@ router.post('/register', async (req, res) => {
   // saving to database
   user.save((err, user) => {
     if (err) throw err;
-    console.log(user);
-    res.json(user);
+    console.log(user._id + ' rigistered');
+    res.status(200).end();
   });
 
 });
@@ -61,7 +61,7 @@ router.post('/login', async (req, res) => {
   }, process.env.TOKEN_SECRET);
 
   res.header('auth-token', token);
-  res.send(token);
+  res.status(200).json(token);
 });
 
 module.exports = router;

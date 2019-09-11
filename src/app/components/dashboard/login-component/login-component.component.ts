@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UtilsService } from 'src/app/services/utils.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-login-component',
@@ -13,7 +14,7 @@ export class LoginComponentComponent implements OnInit {
   signUpForm: FormGroup;
   categories: string[];
 
-  constructor(private formBuilder: FormBuilder, private utilsService: UtilsService) {
+  constructor(private formBuilder: FormBuilder, private utilsService: UtilsService, private userService: UserService) {
     this.categories = this.utilsService.getCetegoriesList();
   }
 
@@ -25,20 +26,20 @@ export class LoginComponentComponent implements OnInit {
 
 
     this.signUpForm = this.formBuilder.group({
-      username: '',
-      s_email: '',
-      s_password: '',
-      s_confirm_password: '',
-      s_category: ''
+      name: '',
+      email: '',
+      password: '',
+      confirm_password: '',
+      categories: ''
     });
   }
 
   login() {
-    console.log(this.loginForm.value);
+    this.userService.loginUser(JSON.stringify(this.loginForm.value));
   }
 
   register() {
-    console.log(this.signUpForm.value);
+    this.userService.registerUser(JSON.stringify(this.signUpForm.value));
   }
 
 }

@@ -18,7 +18,7 @@ const registerValidate = data => {
 
     password: Joi.string(),
 
-    repeat_password: Joi.ref('password'),
+    confirm_password: Joi.ref('password'),
 
     categories: Joi.array().items()
 

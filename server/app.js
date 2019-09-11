@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const app = express();
 
@@ -21,6 +22,7 @@ db.once('open', function () {
   console.log('connected to database!');
 });
 
+app.use(cors());
 app.use(express.json());
 app.use('/api/user', require('./routes/api/user'));
 app.use('/api/posts', require('./routes/api/posts'));

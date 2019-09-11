@@ -47,32 +47,32 @@
           <div class="modal-body signUp-form">
 
             <mat-form-field appearance="outline">
-              <input matInput formControlName="username">
+              <input matInput formControlName="name">
               <mat-label>Name</mat-label>
               <mat-icon matSuffix>person</mat-icon>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
-              <input matInput formControlName="s_email">
+              <input matInput formControlName="email">
               <mat-label>Email</mat-label>
               <mat-icon matSuffix>email</mat-icon>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
-              <input matInput type="password" formControlName="s_password">
+              <input matInput type="password" formControlName="password">
               <mat-label>Password</mat-label>
               <mat-icon matSuffix>lock</mat-icon>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
-              <input matInput type="password" formControlName="s_confirm_password">
+              <input matInput type="password" formControlName="confirm_password">
               <mat-label>Password</mat-label>
               <mat-icon matSuffix>lock</mat-icon>
             </mat-form-field>
 
             <mat-form-field>
               <mat-label>Select Category</mat-label>
-              <mat-select formControlName="s_category" multiple>
+              <mat-select formControlName="categories" multiple>
                 <mat-option *ngFor="let category of categories" [value]="category">{{category}}</mat-option>
               </mat-select>
             </mat-form-field>
