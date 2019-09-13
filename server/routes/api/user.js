@@ -27,15 +27,18 @@ router.post('/register', async (req, res) => {
     name: req.body.name,
     email: req.body.email,
     password: hashedPassword,
-    categories: req.body.categories
   });
 
+  // Pushing subdocs
+  req.body.categories.forEach(category => {
+    user.categories.push(category);
+  });
 
   // saving to database
   user.save((err, user) => {
     if (err) throw err;
     console.log(user._id + ' rigistered');
-    res.status(200).end();
+    res.status(200).json(user.name).end();
   });
 
 });

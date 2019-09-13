@@ -28,7 +28,8 @@ export class LoginComponentComponent implements OnInit {
     this.signUpForm = this.formBuilder.group({
       name: '',
       email: '',
-      password: '',
+      password:
+        '',
       confirm_password: '',
       categories: ''
     });
@@ -39,6 +40,15 @@ export class LoginComponentComponent implements OnInit {
   }
 
   register() {
+    console.log();
+    this.signUpForm.value.categories = Object.assign({}, {
+      categories: this.signUpForm.value.categories.map(categoty => {
+        return {
+          name: categoty
+        };
+      })
+    });
+    this.signUpForm.value.categories = this.signUpForm.value.categories.categories;
     this.userService.registerUser(JSON.stringify(this.signUpForm.value));
   }
 

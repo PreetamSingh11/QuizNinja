@@ -20,7 +20,7 @@ const registerValidate = data => {
 
     confirm_password: Joi.ref('password'),
 
-    categories: Joi.array().items()
+    categories: Joi.any()
 
   });
 
