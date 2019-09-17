@@ -1,21 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  loginStatus: boolean;
-  constructor(private http: HttpClient) {
-    this.loginStatus = false;
-  }
 
-  getLoginStatus() {
-    return this.loginStatus;
+  loginStatusObservable = new BehaviorSubject<boolean>(false);
+
+  loginStatus = this.loginStatusObservable.asObservable();
+  constructor(private http: HttpClient) {
+    this.loginStatusObservable.next(localStorage.getItem('loginStatus') === 'true');
   }
 
   registerUser(userValue: any) {
@@ -24,12 +22,7 @@ export class UserService {
         'Content-Type': 'application/json'
       })
     };
-    this.http.post(environment.apiBaseUrl + '/user/register', userValue, httpOptions)
-      .pipe(
-        catchError(error => {
-          return throwError(error.error);
-        }))
-      .subscribe(data => console.log(data));
+    return this.http.post(environment.apiBaseUrl + '/user/register', userValue, httpOptions);
   }
 
   loginUser(userValue: any) {
@@ -38,11 +31,11 @@ export class UserService {
         'Content-Type': 'application/json'
       })
     };
-    this.http.post(environment.apiBaseUrl + '/user/login', userValue, httpOptions)
-      .pipe(
-        catchError(error => {
-          return throwError(error.error);
-        }))
-      .subscribe(data => console.log(data));
+    return this.http.post(environment.apiBaseUrl + '/user/login', userValue, httpOptions);
+  }
+
+  logout() {
+    localStorage.clear();
+    this.loginStatusObservable.next(false);
   }
 }

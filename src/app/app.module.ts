@@ -15,6 +15,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 
 import { CategoriesComponentComponent } from './components/categories-component/categories-component.component';
@@ -28,6 +29,8 @@ import { CreateChallengeComponent } from './components/create-challenge/create-c
 
 import { MatIconModule } from '@angular/material/icon';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { NgFlashMessagesModule } from 'ng-flash-messages';
+import * as bootstrap from 'bootstrap';
 
 @NgModule({
   declarations: [
@@ -53,9 +56,11 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
+    MatProgressBarModule,
     BrowserAnimationsModule,
     ScrollingModule,
-    MatIconModule
+    MatIconModule,
+    NgFlashMessagesModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

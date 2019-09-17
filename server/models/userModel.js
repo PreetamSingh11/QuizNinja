@@ -10,8 +10,14 @@ const categorySchema = mongoose.Schema({
     won: {
       type: Number,
       default: 0
+    },
+    tie: {
+      type: Number,
+      default: 0
     }
   }
+}, {
+  _id: false
 });
 
 const userSchema = mongoose.Schema({

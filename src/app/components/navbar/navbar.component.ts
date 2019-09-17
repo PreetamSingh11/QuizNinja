@@ -12,7 +12,11 @@ export class NavbarComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit() {
-    this.loginStatus = this.userService.getLoginStatus();
+    this.userService.loginStatusObservable.subscribe(loginStatus => this.loginStatus = loginStatus);
+  }
+
+  logout() {
+    this.userService.logout();
   }
 
 }

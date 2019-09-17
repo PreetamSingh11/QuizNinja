@@ -7,13 +7,15 @@
 
     <div class="col-lg-5 col-md-11 col-sm-12">
       <form [formGroup]="loginForm" class="container login-form" (submit)="login()">
+        <mat-progress-bar style="margin-bottom: 2%" *ngIf="loginProgressbarVisible" mode="indeterminate">
+        </mat-progress-bar>
+        <ng-flash-message></ng-flash-message>
         <div class="login-title">
           <h3>Login</h3>
           <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter">
             Register
           </button>
         </div>
-
         <mat-form-field appearance="outline">
           <input matInput formControlName="email">
           <mat-label>Email</mat-label>
@@ -34,10 +36,11 @@
   </div>
 
   <form [formGroup]="signUpForm" class="container" (submit)=register()>
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+    <div #signUpModel class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
       aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
+          <mat-progress-bar *ngIf="progressbarVisible" mode="indeterminate"></mat-progress-bar>
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalCenterTitle">Create an Account</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -45,6 +48,8 @@
             </button>
           </div>
           <div class="modal-body signUp-form">
+
+            <ng-flash-message></ng-flash-message>
 
             <mat-form-field appearance="outline">
               <input matInput formControlName="name">

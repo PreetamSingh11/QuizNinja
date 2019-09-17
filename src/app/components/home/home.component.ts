@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loginStatus = this.userService.getLoginStatus();
+    this.userService.loginStatusObservable.subscribe(loginStatus => this.loginStatus = loginStatus);
   }
 
 }
