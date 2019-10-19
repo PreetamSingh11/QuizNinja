@@ -20,8 +20,8 @@
     <app-dashboard-component></app-dashboard-component>
   </ng-template>
 
-  <hr>
-  <app-categories-component></app-categories-component>
+  <hr *ngIf="loginStatus">
+  <app-categories-component *ngIf="loginStatus"></app-categories-component>
 </body>
 
 </html>

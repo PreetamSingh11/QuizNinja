@@ -3,7 +3,9 @@
     <div *cdkVirtualFor="let player of playersList" class="challengeListItems" (click)="showDetailsFunc(player)">
       <p> {{ player.name }} </p>
       <div class="more" *ngIf="showDetails && player.id === selectedPlayerId">
-        <button style="float: right" class="btn btn-primary btn-sx">Start Match</button>
+        <a [routerLink]="['/match']">
+          <button style="float: right" class="btn btn-primary btn-sx">Start Match</button>
+        </a>
       </div>
     </div>
   </cdk-virtual-scroll-viewport>

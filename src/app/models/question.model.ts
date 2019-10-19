@@ -3,5 +3,6 @@ export interface Question {
   optionType: string;
   category: string;
   options: string[];
+  level: string;
   answares: string[];
 }

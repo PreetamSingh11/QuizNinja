@@ -31,6 +31,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NgFlashMessagesModule } from 'ng-flash-messages';
 import * as bootstrap from 'bootstrap';
+import { MatchComponent } from './components/match/match.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import * as bootstrap from 'bootstrap';
     ChallengeMainComponentComponent,
     HomeComponent,
     CreateChallengeComponent,
-    NavbarComponent
+    NavbarComponent,
+    MatchComponent
   ],
   imports: [
     BrowserModule,

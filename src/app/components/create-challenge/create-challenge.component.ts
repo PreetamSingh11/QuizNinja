@@ -13,6 +13,8 @@ import { ArrayService } from 'src/app/services/array.service';
 export class CreateChallengeComponent implements OnInit {
   selectedCategory: string;
   categories: string[];
+  questionLevels: string[] = ['Easy', 'Intermediate', 'Advanced'];
+  selectedLevel: string;
 
   optionArray: Array<any> = ['A', 'B'];
 
@@ -54,6 +56,7 @@ export class CreateChallengeComponent implements OnInit {
     this.utilService.setSelectedCategory(this.selectedCategory);
     this.slideAddQuestion = true;
     this.slideSelectCategory = false;
+    this.selectedLevel = undefined;
     this.initQuestionForm();
   }
 
@@ -103,6 +106,7 @@ export class CreateChallengeComponent implements OnInit {
       optionType: questionObject.optionType,
       category: this.selectedCategory,
       options: questionObject.options,
+      level: this.selectedLevel,
       answares: []
     };
     if (this.validQuestionObject()) {
@@ -122,10 +126,12 @@ export class CreateChallengeComponent implements OnInit {
     }
   }
 
+  addLevel() {
+    this.myQuestion.level = this.selectedLevel;
+  }
+
   submitQuestion() {
-    if (this.myQuestion.answares.length > 0) {
-      console.log(JSON.stringify(this.myQuestion));
-    }
+    console.log(JSON.stringify(this.myQuestion));
   }
 
   validQuestionObject() {

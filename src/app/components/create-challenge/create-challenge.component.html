@@ -111,8 +111,22 @@
 
       <div class="row justify-content-center">
         <div class="form-group col-10">
-          <button type="button" [disabled]="myQuestion.answares.length < 1" (click)="submitQuestion()"
-            class="btn btn-primary btn-sm">Submit</button>
+          <mat-form-field>
+            <mat-label> Select level</mat-label>
+            <mat-select [(value)]="selectedLevel" (valueChange)="addLevel()">
+              <mat-option *ngFor="let level of questionLevels" [value]="level">
+                {{level}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="form-group col-10">
+          <button type="button" [disabled]="myQuestion.answares.length < 1 && myQuestion.level !== undefined"
+            (click)="submitQuestion()" class="btn btn-primary btn-sm">Submit</button>
         </div>
       </div>
     </form>

@@ -15,7 +15,7 @@ export class UtilsService {
   selectedCategory = this.category.asObservable();
   selectedPlayers = this.playersList.asObservable();
 
-  private categories = ['C', 'Java', 'Python', 'Go', 'C', 'Java', 'Python', 'Go', 'Node.js', 'C', 'Java', 'Python', 'Go', 'Node.js'];
+  private categories = ['C', 'Java', 'Python', 'Go', 'Node.js'];
   constructor() {
     this.categories.sort();
     this.players = [{
